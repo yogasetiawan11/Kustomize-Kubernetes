@@ -32,3 +32,29 @@ The overlay/ directory shows how to customize the base:
 - ``Adds`` a prefix to all resources (dev-)
 - ``Updates`` the nginx image version to 1.20
 - ``Adds`` environment labels
+
+## List command for Kustomize
+View the deployment base
+```bash
+kubectl kustomize base/
+```
+
+View the Kustomize version
+```bash
+
+```
+
+Apply to you Cluster
+```bash
+kubectl apply -k overlay/
+```
+
+## Mechanism of Kustomize 
+
+1. Kustomize read the base configuratio
+2. It apply the changes spesify in overlay
+- Adds "dev-" prefix to names
+- Updates the nginx image
+- Adds environment labels
+3. Generates the final configuration
+
