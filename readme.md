@@ -7,3 +7,28 @@ Similarly, in Kubernetes, you deal with many types of resources such as ``Deploy
 Across different projects, you might use different namespaces, labels, or slightly different configurations.
 
 Kustomize helps you manage these variations by allowing you to create base configurations and then apply overlays for specific environments or projects (for example, dev, staging, production). This keeps your Kubernetes manifests clean, reusable, and easy to maintain.
+
+Structure folder For Kustomize
+```yaml
+.
+├── base/                  # Your original configuration
+│  ├── deployment.yaml     # A basic nginx deployment
+│   └── kustomization.yaml # Tells Kustomize what to include
+└── overlay/               # Your customizations
+   └── kustomization.yaml  # Defines how to modify the base
+```
+
+## Understanding the Files
+### Base Configuration
+The ``base/`` directory contains your original, unchanged 
+configuration:
+
+- ``deployment.yaml``: A simple nginx web server deployment
+kustomization.yaml: Lists which files to include
+
+### Overlay Configuration
+The overlay/ directory shows how to customize the base:
+
+- ``Adds`` a prefix to all resources (dev-)
+- ``Updates`` the nginx image version to 1.20
+- ``Adds`` environment labels
